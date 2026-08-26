@@ -17,20 +17,20 @@ import conjunto3 from "../assets/productos/conjunto3.png.jpeg";
 import conjunto4 from "../assets/productos/conjunto4.png.jpeg";
 
 const productos = [
-  { id: 1, nombre: "Camiseta básica", precio: 35000, imagen: camisa, categoria: "Camisas", etiqueta: "NUEVO" },
+  { id: 1, nombre: "Camiseta esencial", precio: 35000, imagen: camisa, categoria: "Camisas", etiqueta: "NUEVO" },
   { id: 2, nombre: "Sudadera urbana", precio: 60000, imagen: sudadera, categoria: "Sudaderas", etiqueta: "POPULAR" },
   { id: 3, nombre: "Jean clásico", precio: 80000, imagen: pantalon, categoria: "Pantalones", etiqueta: "NUEVO" },
   { id: 4, nombre: "Camiseta estampada", precio: 38000, imagen: camisa1, categoria: "Camisas", etiqueta: "NUEVO" },
-  { id: 5, nombre: "Camiseta oversize", precio: 42000, imagen: camisa2, categoria: "Camisas", etiqueta: "NUEVO" },
+  { id: 5, nombre: "Camiseta oversize", precio: 42000, imagen: camisa2, categoria: "Camisas", etiqueta: "POPULAR" },
   { id: 6, nombre: "Camiseta gráfica", precio: 39000, imagen: camisa3, categoria: "Camisas", etiqueta: "NUEVO" },
   { id: 7, nombre: "Camiseta manga larga", precio: 45000, imagen: camisa4, categoria: "Camisas", etiqueta: "NUEVO" },
-  { id: 8, nombre: "Camiseta deportiva", precio: 37000, imagen: camisa5, categoria: "Camisas", etiqueta: "NUEVO" },
-  { id: 9, nombre: "Conjunto casual", precio: 95000, imagen: conjunto1, categoria: "Sudaderas", etiqueta: "POPULAR" },
-  { id: 10, nombre: "Conjunto deportivo", precio: 98000, imagen: conjunto2, categoria: "Sudaderas", etiqueta: "NUEVO" },
-  { id: 11, nombre: "Conjunto urbano", precio: 100000, imagen: conjunto3, categoria: "Sudaderas", etiqueta: "NUEVO" },
+  { id: 8, nombre: "Camiseta deportiva", precio: 37000, imagen: camisa5, categoria: "Camisas", etiqueta: "POPULAR" },
+  { id: 9, nombre: "Conjunto Urban Vibe", precio: 95000, imagen: conjunto1, categoria: "Sudaderas", etiqueta: "POPULAR" },
+  { id: 10, nombre: "Conjunto street", precio: 98000, imagen: conjunto2, categoria: "Sudaderas", etiqueta: "NUEVO" },
+  { id: 11, nombre: "Conjunto oversize", precio: 100000, imagen: conjunto3, categoria: "Sudaderas", etiqueta: "NUEVO" },
   { id: 12, nombre: "Conjunto premium", precio: 105000, imagen: conjunto4, categoria: "Sudaderas", etiqueta: "POPULAR" },
   { id: 13, nombre: "Pantalón cargo", precio: 75000, imagen: pantalon1, categoria: "Pantalones", etiqueta: "NUEVO" },
-  { id: 14, nombre: "Pantalón jogger", precio: 70000, imagen: pantalon2, categoria: "Pantalones", etiqueta: "NUEVO" },
+  { id: 14, nombre: "Pantalón jogger", precio: 70000, imagen: pantalon2, categoria: "Pantalones", etiqueta: "POPULAR" },
 ];
 
 function Home({ setCarritoAbierto }) {
@@ -150,6 +150,12 @@ function Home({ setCarritoAbierto }) {
           complicado. Seleccionamos prendas modernas, cómodas y versátiles
           para jóvenes que quieren expresar su personalidad y crear su propio
           estilo sin dejar de sentirse ellos mismos.
+        </p>
+
+        <p>
+          Cada pieza de nuestra colección está pensada para acompañarte en tu
+          día a día: desde looks casuales hasta outfits urbanos que hablan
+          por ti. Calidad, comodidad y actitud en cada prenda.
         </p>
       </section>
     </main>
