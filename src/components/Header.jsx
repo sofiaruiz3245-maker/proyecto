@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { AuthContext } from "../context/AuthContext"; // Login
+import { useIdioma } from "../context/IdiomaContext"; // Idioma
 
 export default function Header({ setCarritoAbierto, setLoginAbierto }) {
   const { cart } = useContext(CartContext);
   const { usuario, logout, isAuthenticated } = useContext(AuthContext); // Login
+  const { idioma, alternarIdioma, t } = useIdioma(); // Idioma
 
   const totalItems = cart.reduce(
     (acc, item) => acc + (item.cantidad || item.quantity || 1),
@@ -22,20 +24,28 @@ export default function Header({ setCarritoAbierto, setLoginAbierto }) {
       </div>
 
       <nav className="header-nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Colección</a>
-        <a href="#nosotros">Nosotros</a>
+        <a href="#inicio">{t("nav.inicio", "Inicio")}</a>
+        <a href="#productos">{t("nav.coleccion", "Colección")}</a>
+        <a href="#nosotros">{t("nav.nosotros", "Nosotros")}</a>
       </nav>
 
-      {/* Login: agrupado con el carrito en la esquina derecha */}
       <div className="header-actions">
+        {/* Idioma: alterna español/inglés y recarga los textos vía t() */}
+        <button
+          className="lang-button"
+          onClick={alternarIdioma}
+          aria-label={t("nav.cambiarIdioma", "Cambiar idioma")}
+        >
+          {idioma === "es" ? "EN" : "ES"}
+        </button>
+
         {isAuthenticated ? (
           <button className="cart-icon-button" onClick={logout}>
-            Hola, {usuario.nombre} — Cerrar sesión
+            Hola, {usuario.nombre} — {t("nav.cerrarSesion", "Cerrar sesión")}
           </button>
         ) : (
           <button className="cart-icon-button" onClick={() => setLoginAbierto(true)}>
-            Iniciar sesión
+            {t("nav.iniciarSesion", "Iniciar sesión")}
           </button>
         )}
 
@@ -50,7 +60,7 @@ export default function Header({ setCarritoAbierto, setLoginAbierto }) {
               <circle cx="20" cy="21" r="1"></circle>
               <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
             </svg>
-            <span>Carrito</span>
+            <span>{t("nav.carrito", "Carrito")}</span>
           </div>
           {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
         </button>

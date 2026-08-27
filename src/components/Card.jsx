@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { useIdioma } from '../context/IdiomaContext'; // Idioma
 
 function Card({ producto }) {
   const { addToCart } = useContext(CartContext);
+  const { t } = useIdioma();
 
   return (
     <article className="product-card">
@@ -19,7 +21,7 @@ function Card({ producto }) {
           <strong>${producto.precio.toLocaleString("es-CO")}</strong>
         </div>
         <button className="buy-button" onClick={() => addToCart(producto)}>
-          <span>+</span> Agregar al carrito
+          <span>+</span> {t("card.agregar", "Agregar al carrito")}
         </button>
       </div>
     </article>

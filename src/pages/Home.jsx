@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import Card from "../components/Card";
+import { useIdioma } from "../context/IdiomaContext"; // Idioma
 
 import camisa from "../assets/productos/camisa.png.jpeg";
 import camisa1 from "../assets/productos/camisa1.png.jpeg";
@@ -34,7 +35,16 @@ const productos = [
 ];
 
 function Home({ setCarritoAbierto }) {
+  const { t } = useIdioma();
   const [categoria, setCategoria] = useState("Todos");
+
+  // Nombres visibles de categorías; el filtrado sigue usando la clave en español
+  const categorias = [
+    { clave: "Todos", etiqueta: t("categoria.todos", "Todos") },
+    { clave: "Camisas", etiqueta: t("categoria.camisas", "Camisas") },
+    { clave: "Pantalones", etiqueta: t("categoria.pantalones", "Pantalones") },
+    { clave: "Sudaderas", etiqueta: t("categoria.sudaderas", "Sudaderas") },
+  ];
 
   const productosFiltrados = useMemo(
     () =>
@@ -49,33 +59,30 @@ function Home({ setCarritoAbierto }) {
       {/* SECCIÓN PRINCIPAL */}
       <section className="hero" id="inicio">
         <div className="hero-content">
-          <span className="eyebrow">COLECCIÓN 2026</span>
+          <span className="eyebrow">{t("hero.eyebrow", "COLECCIÓN 2026")}</span>
 
           <h1>
-            Tu estilo.
+            {t("hero.titulo1", "Tu estilo.")}
             <br />
-            <span>Tu momento.</span>
+            <span>{t("hero.titulo2", "Tu momento.")}</span>
           </h1>
 
-          <p>
-            Ropa moderna, cómoda y con personalidad para que todos los días
-            tengas algo que decir.
-          </p>
+          <p>{t("hero.descripcion", "Ropa moderna, cómoda y con personalidad para que todos los días tengas algo que decir.")}</p>
 
           <div className="hero-actions">
             <a href="#productos" className="primary-button">
-              Explorar colección <span>→</span>
+              {t("hero.explorar", "Explorar colección")} <span>→</span>
             </a>
 
             <button className="secondary-button" onClick={() => setCarritoAbierto(true)}>
-              Ver carrito
+              {t("hero.verCarrito", "Ver carrito")}
             </button>
           </div>
 
           <div className="hero-features">
-            <span>✓ Calidad garantizada</span>
-            <span>✓ Envíos a todo Colombia</span>
-            <span>✓ Pago seguro</span>
+            <span>{t("hero.feature1", "✓ Calidad garantizada")}</span>
+            <span>{t("hero.feature2", "✓ Envíos a todo Colombia")}</span>
+            <span>{t("hero.feature3", "✓ Pago seguro")}</span>
           </div>
         </div>
 
@@ -91,9 +98,9 @@ function Home({ setCarritoAbierto }) {
           </div>
 
           <div className="floating-label">
-            ★ Favoritos
+            {t("hero.favoritos", "★ Favoritos")}
             <br />
-            <b>de la temporada</b>
+            <b>{t("hero.temporada", "de la temporada")}</b>
           </div>
         </div>
       </section>
@@ -102,26 +109,21 @@ function Home({ setCarritoAbierto }) {
       <section className="products-section" id="productos">
         <div className="section-heading">
           <div>
-            <span className="section-eyebrow">DESCUBRE</span>
-            <h2>Nuestra colección</h2>
+            <span className="section-eyebrow">{t("productos.eyebrow", "DESCUBRE")}</span>
+            <h2>{t("productos.titulo", "Nuestra colección")}</h2>
           </div>
 
-          <p>
-            Prendas esenciales para crear looks que se sienten tan bien como
-            se ven.
-          </p>
+          <p>{t("productos.descripcion", "Prendas esenciales para crear looks que se sienten tan bien como se ven.")}</p>
         </div>
 
         <div className="categories">
-          {["Todos", "Camisas", "Pantalones", "Sudaderas"].map((item) => (
+          {categorias.map((item) => (
             <button
-              key={item}
-              className={
-                categoria === item ? "category active" : "category"
-              }
-              onClick={() => setCategoria(item)}
+              key={item.clave}
+              className={categoria === item.clave ? "category active" : "category"}
+              onClick={() => setCategoria(item.clave)}
             >
-              {item}
+              {item.etiqueta}
             </button>
           ))}
         </div>
@@ -136,27 +138,18 @@ function Home({ setCarritoAbierto }) {
       {/* SECCIÓN SOBRE NOSOTROS */}
       <section className="about" id="nosotros">
         <div>
-          <span className="section-eyebrow">SOBRE NOSOTROS</span>
+          <span className="section-eyebrow">{t("nosotros.eyebrow", "SOBRE NOSOTROS")}</span>
 
           <h2>
-            Moda sencilla,
+            {t("nosotros.titulo1", "Moda sencilla,")}
             <br />
-            <span>personalidad enorme.</span>
+            <span>{t("nosotros.titulo2", "personalidad enorme.")}</span>
           </h2>
         </div>
 
-        <p>
-          En <b>Urban Vibe</b> creemos que vestirse bien no tiene que ser
-          complicado. Seleccionamos prendas modernas, cómodas y versátiles
-          para jóvenes que quieren expresar su personalidad y crear su propio
-          estilo sin dejar de sentirse ellos mismos.
-        </p>
+        <p>{t("nosotros.parrafo1", "En Urban Vibe creemos que vestirse bien no tiene que ser complicado. Seleccionamos prendas modernas, cómodas y versátiles para jóvenes que quieren expresar su personalidad y crear su propio estilo sin dejar de sentirse ellos mismos.")}</p>
 
-        <p>
-          Cada pieza de nuestra colección está pensada para acompañarte en tu
-          día a día: desde looks casuales hasta outfits urbanos que hablan
-          por ti. Calidad, comodidad y actitud en cada prenda.
-        </p>
+        <p>{t("nosotros.parrafo2", "Cada pieza de nuestra colección está pensada para acompañarte en tu día a día: desde looks casuales hasta outfits urbanos que hablan por ti. Calidad, comodidad y actitud en cada prenda.")}</p>
       </section>
     </main>
   );

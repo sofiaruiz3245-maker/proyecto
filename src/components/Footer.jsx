@@ -1,4 +1,8 @@
+import { useIdioma } from "../context/IdiomaContext"; // Idioma
+
 function Footer() {
+  const { t } = useIdioma();
+
   return (
     <footer className="footer" id="contacto">
       <div>
@@ -6,18 +10,18 @@ function Footer() {
           Urban<b>Vibe</b>
         </div>
 
-        <p>Estilo que habla por ti.</p>
+        <p>{t("footer.tagline", "Estilo que habla por ti.")}</p>
       </div>
 
       <div className="footer-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Productos</a>
-        <a href="#nosotros">Nosotros</a>
+        <a href="#inicio">{t("nav.inicio", "Inicio")}</a>
+        <a href="#productos">{t("nav.coleccion", "Colección")}</a>
+        <a href="#nosotros">{t("nav.nosotros", "Nosotros")}</a>
       </div>
 
       <div className="footer-copy">
-        <p>© 2026 Urban Vibe</p>
-        <p>Todos los derechos reservados</p>
+        <p>{t("footer.copy", "© 2026 Urban Vibe")}</p>
+        <p>{t("footer.derechos", "Todos los derechos reservados")}</p>
       </div>
     </footer>
   );

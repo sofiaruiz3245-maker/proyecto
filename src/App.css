@@ -896,6 +896,24 @@ main {
   gap: 12px;
 }
 
+/* Botón de cambio de idioma (ES/EN) */
+.lang-button {
+  background: #1e1e24;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.lang-button:hover {
+  background: #282830;
+  border-color: rgba(255, 59, 112, 0.4);
+}
+
 /* BOTÓN DE CARRITO MODERNO */
 .cart-icon-button {
   position: relative;
